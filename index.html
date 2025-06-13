@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <title>Copiază citatele</title>
+  <title>Copiere Citat</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -51,21 +51,22 @@
 </head>
 <body>
   <div class="container">
-    <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="TP Logo">
-    <h2>Copiază citatele</h2>
-    <textarea id="citat">Aceasta este o citat de exemplu.</textarea>
-    <button onclick="copiar()">Copiază</button>
+    <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="Logo TP">
+    <h2>Copiază citatul</h2>
+    <textarea id="citat">Acesta este un exemplu de citat.</textarea>
+    <button onclick="copiere()">Copiază</button>
   </div>
 
   <script>
-    function copiar() {
+    function copiere() {
       const text = document.getElementById("citat");
       text.select();
       text.setSelectionRange(0, 99999);
       document.execCommand("copy");
-      alert("Citat copiat!");
+      alert("Citatul a fost copiat!");
     }
 
+    // Preia textul din URL (ex: ?text=...)
     const params = new URLSearchParams(window.location.search);
     if (params.has("text")) {
       document.getElementById("citat").value = decodeURIComponent(params.get("text"));
