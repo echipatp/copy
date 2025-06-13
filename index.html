@@ -1,111 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <title>Copiar Citat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+
+    img {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      font-size: 16px;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #7f7537;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #6c662f;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="ro"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Copiere Citate&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #f9f9f9;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.header img {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h2 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.citat-box {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>textarea {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 600px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>resize: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #7f7537;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 8px 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: #6d662f;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="Logo"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Citate în toate limbile&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="container"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const languages = ["RO", "ES", "EN", "DE", "FR", "PT", "IT"];</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const params = new URLSearchParams(window.location.search);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>const container = document.getElementById("container");</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>languages.forEach(lang =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const text = params.get(lang.toLowerCase()) || `Citat ${lang} indisponibil.`;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const box = document.createElement("div");</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box.className = "citat-box";</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>box.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;&lt;strong&gt;Citat ${lang}:&lt;/strong&gt;&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;textarea id="citat-${lang}" readonly&gt;${text}&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="copiere('${lang}')"&gt;Copiază ${lang}&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>`;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>container.appendChild(box);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function copiere(lang) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const textarea = document.getElementById(`citat-${lang}`);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>textarea.select();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>textarea.setSelectionRange(0, 99999);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>document.execCommand("copy");</p>
-<p class="p1"><span class="Apple-converted-space">      </span>alert(`Citatul ${lang} a fost copiat!`);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <div class="container">
+    <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="TP Logo">
+    <h2>Copia tu cita</h2>
+    <textarea id="citat">Aceasta este o citat de exemplu.</textarea>
+    <button onclick="copiar()">Copiar</button>
+  </div>
+
+  <script>
+    function copiar() {
+      const text = document.getElementById("citat");
+      text.select();
+      text.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Citat copiat!");
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("text")) {
+      document.getElementById("citat").value = decodeURIComponent(params.get("text"));
+    }
+  </script>
 </body>
 </html>
