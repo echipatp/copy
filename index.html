@@ -5,6 +5,18 @@
   <title>Citat</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
+    img.logo {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+    .info {
+      margin-bottom: 25px;
+      font-size: 18px;
+      color: #333;
+    }
+    .info strong {
+      color: #7f7537;
+    }
     .caseta {
       border: 2px solid #7f7537;
       border-radius: 10px;
@@ -23,8 +35,16 @@
   </style>
 </head>
 <body>
-  <h2>Citate traduse</h2>
+  <!-- Logo -->
+  <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="Logo" class="logo">
 
+  <!-- Autor + Număr de citat -->
+  <div class="info">
+    <div><strong>Autor:</strong> <span id="autor_ro"></span></div>
+    <div><strong>Număr de citat:</strong> <span id="numar_citat"></span></div>
+  </div>
+
+  <!-- Casete pentru fiecare limbă -->
   <div class="caseta">
     <strong>Română:</strong> <span id="ro"></span><br>
     <button onclick="copiere('ro')">Copiază</button>
@@ -67,16 +87,20 @@
     }
 
     function incarcaTextele() {
-      const limbi = ['ro', 'es', 'en', 'de', 'pt', 'fr', 'it'];
+      document.getElementById("autor_ro").innerText = decodeURIComponent(getParam("autor"));
+      document.getElementById("numar_citat").innerText = decodeURIComponent(getParam("numar"));
+
+      const limbi = ["ro", "es", "en", "de", "pt", "fr", "it"];
       limbi.forEach(limba => {
-        document.getElementById(limba).innerText = decodeURIComponent(getParam(limba));
+        const el = document.getElementById(limba);
+        if (el) el.innerText = decodeURIComponent(getParam(limba));
       });
     }
 
     function copiere(id) {
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert("Textul a fost copiat!");
+        alert("Textul a fost copiat.");
       });
     }
 
