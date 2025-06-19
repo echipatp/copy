@@ -24,6 +24,10 @@
       margin-bottom: 25px;
       max-width: 600px;
     }
+    .text-principal {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
     .referinta {
       margin-top: 10px;
       font-style: italic;
@@ -32,12 +36,13 @@
       padding: 8px;
       border-radius: 5px;
     }
-    button {
+    .copiere-btn {
       background-color: #7f7537;
       color: white;
       border: none;
       padding: 10px;
       margin-top: 10px;
+      margin-right: 5px;
       border-radius: 5px;
       cursor: pointer;
     }
@@ -45,61 +50,68 @@
 </head>
 <body>
   <!-- Logo -->
-  <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="Logo" class="logo">
+  <img src="https://i.postimg.cc/J4HK53Fd/TP-Ilustrator-C4-1.png" alt="Logo" class="logo">
 
   <!-- Număr de citat -->
   <div class="info">
-    <div><strong>Număr de citat:</strong> <span id="numar_citat"></span></div>
+    <div><strong>Număr de sursă:</strong> <span id="numar_citat"></span></div>
   </div>
 
   <!-- Casete pentru fiecare limbă -->
   <div class="caseta">
-    <strong>Română:</strong> <span id="ro"></span><br>
+    <strong>Română:</strong>
+    <div class="text-principal" id="ro"></div>
     <div class="referinta" id="roRef"></div>
-    <button onclick="copiere('ro')">Copiază citat/verset</button>
-    <button onclick="copiere('roRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('ro')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('roRef')">Copiază autor/referința</button>
   </div>
 
   <div class="caseta">
-    <strong>Español:</strong> <span id="es"></span><br>
+    <strong>Español:</strong>
+    <div class="text-principal" id="es"></div>
     <div class="referinta" id="esRef"></div>
-    <button onclick="copiere('es')">Copiază citat/verset</button>
-    <button onclick="copiere('esRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('es')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('esRef')">Copiază autor/referința</button>
   </div>
 
   <div class="caseta">
-    <strong>English:</strong> <span id="en"></span><br>
+    <strong>English:</strong>
+    <div class="text-principal" id="en"></div>
     <div class="referinta" id="enRef"></div>
-    <button onclick="copiere('en')">Copiază citat/verset</button>
-    <button onclick="copiere('enRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('en')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('enRef')">Copiază autor/referința</button>
   </div>
 
   <div class="caseta">
-    <strong>Deutsch:</strong> <span id="de"></span><br>
+    <strong>Deutsch:</strong>
+    <div class="text-principal" id="de"></div>
     <div class="referinta" id="deRef"></div>
-    <button onclick="copiere('de')">Copiază citat/verset</button>
-    <button onclick="copiere('deRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('de')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('deRef')">Copiază autor/referința</button>
   </div>
 
   <div class="caseta">
-    <strong>Português:</strong> <span id="pt"></span><br>
+    <strong>Português:</strong>
+    <div class="text-principal" id="pt"></div>
     <div class="referinta" id="ptRef"></div>
-    <button onclick="copiere('pt')">Copiază citat/verset</button>
-    <button onclick="copiere('ptRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('pt')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('ptRef')">Copiază autor/referința</button>
   </div>
 
   <div class="caseta">
-    <strong>Français:</strong> <span id="fr"></span><br>
+    <strong>Français:</strong>
+    <div class="text-principal" id="fr"></div>
     <div class="referinta" id="frRef"></div>
-    <button onclick="copiere('fr')">Copiază citat/verset</button>
-    <button onclick="copiere('frRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('fr')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('frRef')">Copiază autor/referința</button>
   </div>
 
   <div class="caseta">
-    <strong>Italiano:</strong> <span id="it"></span><br>
+    <strong>Italiano:</strong>
+    <div class="text-principal" id="it"></div>
     <div class="referinta" id="itRef"></div>
-    <button onclick="copiere('it')">Copiază citat/verset</button>
-    <button onclick="copiere('itRef')">Copiază autor/referința</button>
+    <button class="copiere-btn" onclick="copiere('it')">Copiază citat/verset</button>
+    <button class="copiere-btn" onclick="copiere('itRef')">Copiază autor/referința</button>
   </div>
 
   <script>
