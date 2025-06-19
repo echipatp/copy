@@ -37,57 +37,57 @@
 <body>
   <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="Logo" class="logo" />
   <div class="info">
-    <div><strong>Număr de sursă:</strong> <span id="numar_citat"></span></div>
+    <div><strong>Număr sursă:</strong> <span id="numar_sursa"></span></div>
   </div>
 
   <!-- Para cada idioma -->
   <div class="caseta" id="caseta_ro">
     <strong>Română:</strong> <span id="ro"></span>
-    <div class="referinta" id="roAutorReferinta"></div>
+    <div class="referinta" id="roInfo"></div>
     <button onclick="copiere('ro')">Copiază text</button>
-    <button onclick="copiere('roAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('roInfo')">Copiază autor/referință</button>
   </div>
 
   <div class="caseta" id="caseta_es">
     <strong>Español:</strong> <span id="es"></span>
-    <div class="referinta" id="esAutorReferinta"></div>
+    <div class="referinta" id="esInfo"></div>
     <button onclick="copiere('es')">Copiază text</button>
-    <button onclick="copiere('esAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('esInfo')">Copiază autor/referință</button>
   </div>
 
   <div class="caseta" id="caseta_en">
     <strong>English:</strong> <span id="en"></span>
-    <div class="referinta" id="enAutorReferinta"></div>
+    <div class="referinta" id="enInfo"></div>
     <button onclick="copiere('en')">Copiază text</button>
-    <button onclick="copiere('enAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('enInfo')">Copiază autor/referință</button>
   </div>
 
   <div class="caseta" id="caseta_de">
     <strong>Deutsch:</strong> <span id="de"></span>
-    <div class="referinta" id="deAutorReferinta"></div>
+    <div class="referinta" id="deInfo"></div>
     <button onclick="copiere('de')">Copiază text</button>
-    <button onclick="copiere('deAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('deInfo')">Copiază autor/referință</button>
   </div>
 
   <div class="caseta" id="caseta_pt">
     <strong>Português:</strong> <span id="pt"></span>
-    <div class="referinta" id="ptAutorReferinta"></div>
+    <div class="referinta" id="ptInfo"></div>
     <button onclick="copiere('pt')">Copiază text</button>
-    <button onclick="copiere('ptAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('ptInfo')">Copiază autor/referință</button>
   </div>
 
   <div class="caseta" id="caseta_fr">
     <strong>Français:</strong> <span id="fr"></span>
-    <div class="referinta" id="frAutorReferinta"></div>
+    <div class="referinta" id="frInfo"></div>
     <button onclick="copiere('fr')">Copiază text</button>
-    <button onclick="copiere('frAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('frInfo')">Copiază autor/referință</button>
   </div>
 
   <div class="caseta" id="caseta_it">
     <strong>Italiano:</strong> <span id="it"></span>
-    <div class="referinta" id="itAutorReferinta"></div>
+    <div class="referinta" id="itInfo"></div>
     <button onclick="copiere('it')">Copiază text</button>
-    <button onclick="copiere('itAutorReferinta')">Copiază autor/referință</button>
+    <button onclick="copiere('itInfo')">Copiază autor/referință</button>
   </div>
 
 <script>
@@ -97,42 +97,43 @@
   }
 
   function incarcaTextele() {
-    document.getElementById("numar_citat").innerText = decodeURIComponent(getParam("numar"));
+    const tip = getParam("tip").toLowerCase(); // "citat" o "verset"
+    const numar = getParam("numar_sursa") || "";
 
+    document.getElementById("numar_sursa").innerText = decodeURIComponent(numar);
+
+    // Autor común para citas
+    const autor = decodeURIComponent(getParam("ro_virtual_autor")).trim();
+
+    // Idiomas
     const limbi = ["ro", "es", "en", "de", "pt", "fr", "it"];
-    const tip = decodeURIComponent(getParam("tip")).toLowerCase(); // 'citat' o 'verset'
-    const autorCitat = decodeURIComponent(getParam("roVirtualRo")).trim();
 
     limbi.forEach((limba) => {
-      const text = decodeURIComponent(getParam(limba + "Virtual")).trim();
-      const ref = decodeURIComponent(getParam(limba + "VirtualReferinta")).trim();
+      const text = decodeURIComponent(getParam(limba + "_virtual")).trim();
+      const referinta = decodeURIComponent(getParam(limba + "_virtual_referinta")).trim();
       const elText = document.getElementById(limba);
-      const elAutorRef = document.getElementById(limba + "AutorReferinta");
+      const elInfo = document.getElementById(limba + "Info");
 
       elText.innerText = text;
 
       if (tip === "citat") {
-        // Mostrar autor común
-        elAutorRef.innerText = autorCitat || "";
-        elAutorRef.style.display = autorCitat ? "block" : "none";
+        elInfo.innerText = autor || "";
+        elInfo.style.display = autor ? "block" : "none";
       } else if (tip === "verset") {
-        // Mostrar referencia por idioma
-        elAutorRef.innerText = ref || "";
-        elAutorRef.style.display = ref ? "block" : "none";
+        elInfo.innerText = referinta || "";
+        elInfo.style.display = referinta ? "block" : "none";
       } else {
-        elAutorRef.innerText = "";
-        elAutorRef.style.display = "none";
+        elInfo.innerText = "";
+        elInfo.style.display = "none";
       }
     });
   }
 
   function copiere(id) {
     const el = document.getElementById(id);
-    const text = el ? el.innerText.trim() : "";
-    if (!text) {
-      alert("Nu există nimic de copiat.");
-      return;
-    }
+    if (!el) return alert("Elementul nu există.");
+    const text = el.innerText.trim();
+    if (!text) return alert("Nu există nimic de copiat.");
     navigator.clipboard.writeText(text).then(() => {
       alert("Textul a fost copiat.");
     }).catch(() => {
