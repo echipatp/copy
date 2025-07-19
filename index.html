@@ -128,29 +128,31 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 8px;
+      gap: 10px;
     }
 
-    /* Texto dentro de cada idioma */
+    /* El texto dentro de cada idioma */
     .language-text {
       white-space: pre-wrap;
       margin: 0;
-      width: 100%;
     }
 
-    /* Autor/referencia como bloque */
+    /* Autor/referencia como un bloque separado */
     .language-author {
       font-style: italic;
       font-size: 14px;
       margin-top: 4px;
       color: #5a5323;
       user-select: none;
-      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     /* Contenedor botones */
     .btn-group {
-      margin-top: 10px;
+      margin-top: 6px;
       width: 100%;
       display: flex;
       gap: 10px;
@@ -207,7 +209,7 @@
   <div class="numar-sursa">Număr sursă:</div>
 
   <div id="languages" style="max-width: 620px; width: 100%;">
-    <!-- Plantilla para cada idioma -->
+    <!-- Română -->
     <div class="language-box" id="caseta_ro">
       <strong>Română:</strong>
       <p id="ro" class="language-text"></p>
@@ -218,6 +220,7 @@
       </div>
     </div>
 
+    <!-- Español -->
     <div class="language-box" id="caseta_es">
       <strong>Español:</strong>
       <p id="es" class="language-text"></p>
@@ -228,6 +231,7 @@
       </div>
     </div>
 
+    <!-- English -->
     <div class="language-box" id="caseta_en">
       <strong>English:</strong>
       <p id="en" class="language-text"></p>
@@ -238,6 +242,7 @@
       </div>
     </div>
 
+    <!-- Deutsch -->
     <div class="language-box" id="caseta_de">
       <strong>Deutsch:</strong>
       <p id="de" class="language-text"></p>
@@ -248,6 +253,7 @@
       </div>
     </div>
 
+    <!-- Português -->
     <div class="language-box" id="caseta_pt">
       <strong>Português:</strong>
       <p id="pt" class="language-text"></p>
@@ -258,6 +264,7 @@
       </div>
     </div>
 
+    <!-- Français -->
     <div class="language-box" id="caseta_fr">
       <strong>Français:</strong>
       <p id="fr" class="language-text"></p>
@@ -268,6 +275,7 @@
       </div>
     </div>
 
+    <!-- Italiano -->
     <div class="language-box" id="caseta_it">
       <strong>Italiano:</strong>
       <p id="it" class="language-text"></p>
@@ -305,6 +313,7 @@
         const el = document.getElementById(id);
         if (el) {
           el.textContent = val;
+
           if (val.includes('\n')) {
             el.style.lineHeight = '1.2';
           } else {
@@ -314,16 +323,26 @@
       }
     }
 
-    // Rellenar textos y autores
+    function setAuthor(id, lang) {
+      const referinta = params.get(lang + '_virtual_referinta');
+      const autor = params.get(lang + '_virtual_autor');
+      const val = referinta || autor;
+      if (val !== null && val !== "") {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      }
+    }
+
+    // Set textos y autores
     const languages = ['ro','es','en','de','pt','fr','it'];
     languages.forEach(lang => {
       setText(lang, lang + '_virtual');
-      setText(lang + 'Info', lang + '_virtual_referinta');
+      setAuthor(lang + 'Info', lang);
     });
 
     // Număr sursă
     const numarSursaDiv = document.querySelector('.numar-sursa');
-    const numarSursa = params.get('numar_sursa');
+    const numarSursa = params.get('numar_virtual');
     if (numarSursa) {
       numarSursaDiv.textContent = 'Număr sursă: ' + numarSursa;
     }
