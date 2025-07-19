@@ -19,7 +19,7 @@
       align-items: center;
       min-height: 100vh;
       position: relative;
-      overflow: hidden;
+      overflow-y: auto;
       box-sizing: border-box;
       font-family: 'Open Sans', sans-serif;
       font-weight: 100;
@@ -178,14 +178,12 @@
   <!-- Logo -->
   <img src="https://i.postimg.cc/W4dZvCPp/TPI-ANIMADO-1.gif" alt="TP Ilustrator" class="logo" />
 
-
-
   <!-- Recuadro con título dentro -->
   <div class="intro-box">
     <h1>Bine ai venit.</h1>
   </div>
   
-    <!-- Texto Număr sursă justo antes del cuadro rumano -->
+  <!-- Texto Număr sursă justo antes del cuadro rumano -->
   <div class="numar-sursa">Număr sursă:</div>
 
   <!-- Cajas idiomas -->
@@ -241,19 +239,67 @@
   </div>
 
   <script>
-    // Función para copiar al portapapeles
+    // Función para copiar al portapapeles texto desde un span por ID
     function copiere(id) {
-      const elem = document.getElementById(id);
-      if (!elem) {
-        alert("Elemento no encontrado: " + id);
-        return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try {
+        document.execCommand('copy');
+        alert('Text copiat în clipboard!');
+        sel.removeAllRanges();
+      } catch (e) {
+        alert('Nu s-a putut copia textul.');
       }
-      let text = elem.textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Text copiat: ' + text);
-      }).catch(() => {
-        alert('Eroare la copiere.');
-      });
+    }
+
+    // Leer parámetros URL
+    const params = new URLSearchParams(window.location.search);
+
+    // Función para asignar texto a un span si parámetro existe
+    function setText(id, param) {
+      const val = params.get(param);
+      if (val !== null && val !== "") {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      }
+    }
+
+    // Asignar textos a cada idioma
+    setText('ro', 'ro_virtual');
+    setText('roInfo', 'ro_virtual_referinta');
+
+    setText('es', 'es_virtual');
+    setText('esInfo', 'es_virtual_referinta');
+
+    setText('en', 'en_virtual');
+    setText('enInfo', 'en_virtual_referinta');
+
+    setText('de', 'de_virtual');
+    setText('deInfo', 'de_virtual_referinta');
+
+    setText('pt', 'pt_virtual');
+    setText('ptInfo', 'pt_virtual_referinta');
+
+    setText('fr', 'fr_virtual');
+    setText('frInfo', 'fr_virtual_referinta');
+
+    setText('it', 'it_virtual');
+    setText('itInfo', 'it_virtual_referinta');
+
+    // Asignar texto numar_sursa y ocultar si vacío
+    const numarSursaDiv = document.querySelector('.numar-sursa');
+    const numarSursa = params.get('numar_sursa');
+    if (numarSursaDiv) {
+      if (numarSursa && numarSursa.trim() !== '') {
+        numarSursaDiv.textContent = 'Număr sursă: ' + numarSursa;
+      } else {
+        numarSursaDiv.style.display = 'none';
+      }
     }
   </script>
 </body>
