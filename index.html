@@ -26,7 +26,6 @@
       color: #7f7537;
     }
 
-    /* Fondos animados */
     .bg-shape {
       position: absolute;
       width: 300px;
@@ -44,7 +43,6 @@
       transform: rotate(15deg);
     }
 
-    /* Logo */
     .logo {
       width: 200px;
       margin-bottom: 25px;
@@ -52,7 +50,6 @@
       animation: fadeIn 1.2s ease-out;
     }
 
-    /* Recuadro con borde premium degradado animado */
     .intro-box {
       background: #ffffff;
       padding: 35px 30px;
@@ -84,7 +81,6 @@
       z-index: -1;
     }
 
-    /* Título dentro del recuadro en Playfair Display Black */
     .intro-box h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
@@ -94,7 +90,6 @@
       user-select: none;
     }
 
-    /* Texto Număr sursă */
     .numar-sursa {
       font-family: 'Open Sans', sans-serif;
       font-weight: 100;
@@ -108,7 +103,6 @@
       z-index: 1;
     }
 
-    /* Nombres idiomas en Playfair Display Black */
     .language-box strong {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
@@ -119,7 +113,6 @@
       user-select: none;
     }
 
-    /* Cajas idiomas - texto y botones en Open Sans Thin */
     .language-box {
       margin-top: 20px;
       padding: 18px 20px;
@@ -132,16 +125,46 @@
       color: #7f7537;
       box-sizing: border-box;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
     }
 
-    /* Botones en Open Sans Thin */
+    /* El texto dentro de cada idioma */
+    .language-text {
+      white-space: pre-wrap;
+      /* interlineado dinámico ajustado en JS */
+      margin: 0;
+    }
+
+    /* Autor/referencia como un bloque separado */
+    .language-author {
+      font-style: italic;
+      font-size: 14px;
+      margin-top: 4px;
+      color: #5a5323;
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    /* Contenedor botones */
+    .btn-group {
+      margin-top: 6px;
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     button {
       background-color: #7f7537;
       color: white;
       border: none;
       padding: 10px 15px;
-      margin-top: 12px;
-      margin-right: 12px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 100;
@@ -149,12 +172,13 @@
       font-size: 14px;
       transition: background-color 0.3s ease;
       user-select: none;
+      flex-grow: 1;
+      min-width: 130px;
     }
     button:hover {
       background-color: #5f5b2b;
     }
 
-    /* Animaciones */
     @keyframes fadeIn {
       0% { opacity: 0; transform: scale(0.9);}
       100% { opacity: 1; transform: scale(1);}
@@ -182,64 +206,89 @@
   <div class="intro-box">
     <h1>Bine ai venit.</h1>
   </div>
-  
-  <!-- Texto Număr sursă justo antes del cuadro rumano -->
+
   <div class="numar-sursa">Număr sursă:</div>
 
-  <!-- Cajas idiomas -->
   <div id="languages" style="max-width: 620px; width: 100%;">
+    <!-- Română -->
     <div class="language-box" id="caseta_ro">
       <strong>Română:</strong>
-      <span id="ro"></span>
-      <button onclick="copiere('ro')">Copiază text</button>
-      <button onclick="copiere('roInfo')">Copiază autor/referință</button>
+      <p id="ro" class="language-text"></p>
+      <div id="roInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('ro')">Copiază text</button>
+        <button onclick="copiere('roInfo')">Copiază autor/referință</button>
+      </div>
     </div>
 
+    <!-- Español -->
     <div class="language-box" id="caseta_es">
       <strong>Español:</strong>
-      <span id="es"></span>
-      <button onclick="copiere('es')">Copiază text</button>
-      <button onclick="copiere('esInfo')">Copiază autor/referință</button>
+      <p id="es" class="language-text"></p>
+      <div id="esInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('es')">Copiază text</button>
+        <button onclick="copiere('esInfo')">Copiază autor/referință</button>
+      </div>
     </div>
 
+    <!-- English -->
     <div class="language-box" id="caseta_en">
       <strong>English:</strong>
-      <span id="en"></span>
-      <button onclick="copiere('en')">Copiază text</button>
-      <button onclick="copiere('enInfo')">Copiază autor/referință</button>
+      <p id="en" class="language-text"></p>
+      <div id="enInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('en')">Copiază text</button>
+        <button onclick="copiere('enInfo')">Copiază autor/referință</button>
+      </div>
     </div>
 
+    <!-- Deutsch -->
     <div class="language-box" id="caseta_de">
       <strong>Deutsch:</strong>
-      <span id="de"></span>
-      <button onclick="copiere('de')">Copiază text</button>
-      <button onclick="copiere('deInfo')">Copiază autor/referință</button>
+      <p id="de" class="language-text"></p>
+      <div id="deInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('de')">Copiază text</button>
+        <button onclick="copiere('deInfo')">Copiază autor/referință</button>
+      </div>
     </div>
 
+    <!-- Português -->
     <div class="language-box" id="caseta_pt">
       <strong>Português:</strong>
-      <span id="pt"></span>
-      <button onclick="copiere('pt')">Copiază text</button>
-      <button onclick="copiere('ptInfo')">Copiază autor/referință</button>
+      <p id="pt" class="language-text"></p>
+      <div id="ptInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('pt')">Copiază text</button>
+        <button onclick="copiere('ptInfo')">Copiază autor/referință</button>
+      </div>
     </div>
 
+    <!-- Français -->
     <div class="language-box" id="caseta_fr">
       <strong>Français:</strong>
-      <span id="fr"></span>
-      <button onclick="copiere('fr')">Copiază text</button>
-      <button onclick="copiere('frInfo')">Copiază autor/referință</button>
+      <p id="fr" class="language-text"></p>
+      <div id="frInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('fr')">Copiază text</button>
+        <button onclick="copiere('frInfo')">Copiază autor/referință</button>
+      </div>
     </div>
-    
+
+    <!-- Italiano -->
     <div class="language-box" id="caseta_it">
       <strong>Italiano:</strong>
-      <span id="it"></span>
-      <button onclick="copiere('it')">Copiază text</button>
-      <button onclick="copiere('itInfo')">Copiază autor/referință</button>
+      <p id="it" class="language-text"></p>
+      <div id="itInfo" class="language-author"></div>
+      <div class="btn-group">
+        <button onclick="copiere('it')">Copiază text</button>
+        <button onclick="copiere('itInfo')">Copiază autor/referință</button>
+      </div>
     </div>
   </div>
 
   <script>
-    // Función para copiar al portapapeles texto desde un span por ID
     function copiere(id) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -257,49 +306,37 @@
       }
     }
 
-    // Leer parámetros URL
     const params = new URLSearchParams(window.location.search);
 
-    // Función para asignar texto a un span si parámetro existe
     function setText(id, param) {
       const val = params.get(param);
       if (val !== null && val !== "") {
         const el = document.getElementById(id);
-        if (el) el.textContent = val;
+        if (el) {
+          el.textContent = val;
+
+          // Ajustar interlineado si tiene salto de línea (más de 1 línea)
+          if (val.includes('\n')) {
+            el.style.lineHeight = '1.2';  // más compacto
+          } else {
+            el.style.lineHeight = '1.6';  // normal
+          }
+        }
       }
     }
 
-    // Asignar textos a cada idioma
-    setText('ro', 'ro_virtual');
-    setText('roInfo', 'ro_virtual_referinta');
+    // Set texto y autor para cada idioma
+    const languages = ['ro','es','en','de','pt','fr','it'];
+    languages.forEach(lang => {
+      setText(lang, lang + '_virtual');
+      setText(lang + 'Info', lang + '_virtual_referinta');
+    });
 
-    setText('es', 'es_virtual');
-    setText('esInfo', 'es_virtual_referinta');
-
-    setText('en', 'en_virtual');
-    setText('enInfo', 'en_virtual_referinta');
-
-    setText('de', 'de_virtual');
-    setText('deInfo', 'de_virtual_referinta');
-
-    setText('pt', 'pt_virtual');
-    setText('ptInfo', 'pt_virtual_referinta');
-
-    setText('fr', 'fr_virtual');
-    setText('frInfo', 'fr_virtual_referinta');
-
-    setText('it', 'it_virtual');
-    setText('itInfo', 'it_virtual_referinta');
-
-    // Asignar texto numar_sursa y ocultar si vacío
+    // Număr sursă
     const numarSursaDiv = document.querySelector('.numar-sursa');
-    const numarSursa = params.get('numar_sursa');
-    if (numarSursaDiv) {
-      if (numarSursa && numarSursa.trim() !== '') {
-        numarSursaDiv.textContent = 'Număr sursă: ' + numarSursa;
-      } else {
-        numarSursaDiv.style.display = 'none';
-      }
+    const numarSursa = params.get('numar_virtual');
+    if (numarSursa) {
+      numarSursaDiv.textContent = 'Număr sursă: ' + numarSursa;
     }
   </script>
 </body>
