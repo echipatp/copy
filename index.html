@@ -2,146 +2,259 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <title>Citat / Verset</title>
+  <link rel="icon" href="https://files.catbox.moe/v15jbq.ico" type="image/x-icon" />
+  <title>TP Ilustrator - Citat/Verset Multilingüe</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900&display=swap" rel="stylesheet" />
+
   <style>
-    body { font-family: sans-serif; padding: 20px; }
-    img.logo { width: 180px; margin-bottom: 20px; }
-    .info { margin-bottom: 25px; font-size: 18px; color: #333; }
-    .info strong { color: #7f7537; }
-    .caseta {
-      border: 2px solid #7f7537;
-      border-radius: 10px;
-      padding: 15px;
+    body {
+      background-color: #ebe5c1;
+      margin: 0;
+      padding: 40px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 100;
+      color: #7f7537;
+    }
+
+    /* Fondos animados */
+    .bg-shape {
+      position: absolute;
+      width: 300px;
+      opacity: 0.25;
+      z-index: 0;
+    }
+    .bg-shape.top-left {
+      top: 0;
+      left: 0;
+      transform: rotate(-15deg);
+    }
+    .bg-shape.bottom-right {
+      bottom: 0;
+      right: 0;
+      transform: rotate(15deg);
+    }
+
+    /* Logo */
+    .logo {
+      width: 200px;
       margin-bottom: 25px;
-      max-width: 600px;
+      z-index: 1;
+      animation: fadeIn 1.2s ease-out;
     }
-    .referinta {
-      margin-top: 10px;
-      font-style: italic;
-      color: #555;
-      background-color: #f0f0d0;
-      padding: 8px;
-      border-radius: 5px;
+
+    /* Recuadro con borde premium degradado animado */
+    .intro-box {
+      background: #ffffff;
+      padding: 35px 30px;
+      border-radius: 18px;
+      max-width: 620px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      font-weight: 100;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 18px;
+      color: #7f7537;
+      box-sizing: border-box;
+      animation: fadeInUp 1s ease-out;
+      margin-bottom: 20px;
+      z-index: 1;
     }
+    .intro-box::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 20px;
+      background: linear-gradient(270deg, #7f7537, #b0a775, #ebe5c1, #b0a775, #7f7537);
+      background-size: 400% 400%;
+      animation: borderGlow 8s ease infinite;
+      z-index: -1;
+    }
+
+    /* Título dentro del recuadro en Playfair Display Black */
+    .intro-box h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 38px;
+      color: #7f7537;
+      margin: 0 0 15px 0;
+      user-select: none;
+    }
+
+    /* Texto Număr sursă */
+    .numar-sursa {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 100;
+      font-size: 16px;
+      color: #7f7537;
+      max-width: 620px;
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: left;
+      user-select: none;
+      z-index: 1;
+    }
+
+    /* Nombres idiomas en Playfair Display Black */
+    .language-box strong {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      color: #7f7537;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+      user-select: none;
+    }
+
+    /* Cajas idiomas - texto y botones en Open Sans Thin */
+    .language-box {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border: 1.8px solid #7f7537;
+      border-radius: 12px;
+      background-color: #f9f7e9;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 100;
+      font-size: 16px;
+      color: #7f7537;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    /* Botones en Open Sans Thin */
     button {
       background-color: #7f7537;
       color: white;
       border: none;
-      padding: 10px;
-      margin-top: 10px;
+      padding: 10px 15px;
+      margin-top: 12px;
+      margin-right: 12px;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: 100;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background-color: #5f5b2b;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes borderGlow {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
   </style>
 </head>
 <body>
-  <img src="https://i.postimg.cc/PJvKtHc2/TP-Ilustrator-C4.png" alt="Logo" class="logo" />
-  <div class="info">
-    <div><strong>Număr sursă:</strong> <span id="numar_sursa"></span></div>
+  <!-- Fondos -->
+  <img src="https://i.postimg.cc/BbX9YZGB/TPI-FORMA-1-ANIMADO.gif" class="bg-shape top-left" alt="Decor 1" />
+  <img src="https://i.postimg.cc/L4CZnxCc/TPI-FORMA-2-ANIMADO.gif" class="bg-shape bottom-right" alt="Decor 2" />
+
+  <!-- Logo -->
+  <img src="https://i.postimg.cc/W4dZvCPp/TPI-ANIMADO-1.gif" alt="TP Ilustrator" class="logo" />
+
+
+
+  <!-- Recuadro con título dentro -->
+  <div class="intro-box">
+    <h1>Bine ai venit.</h1>
+  </div>
+  
+    <!-- Texto Număr sursă justo antes del cuadro rumano -->
+  <div class="numar-sursa">Număr sursă:</div>
+
+  <!-- Cajas idiomas -->
+  <div id="languages" style="max-width: 620px; width: 100%;">
+    <div class="language-box" id="caseta_ro">
+      <strong>Română:</strong>
+      <span id="ro"></span>
+      <button onclick="copiere('ro')">Copiază text</button>
+      <button onclick="copiere('roInfo')">Copiază autor/referință</button>
+    </div>
+
+    <div class="language-box" id="caseta_es">
+      <strong>Español:</strong>
+      <span id="es"></span>
+      <button onclick="copiere('es')">Copiază text</button>
+      <button onclick="copiere('esInfo')">Copiază autor/referință</button>
+    </div>
+
+    <div class="language-box" id="caseta_en">
+      <strong>English:</strong>
+      <span id="en"></span>
+      <button onclick="copiere('en')">Copiază text</button>
+      <button onclick="copiere('enInfo')">Copiază autor/referință</button>
+    </div>
+
+    <div class="language-box" id="caseta_de">
+      <strong>Deutsch:</strong>
+      <span id="de"></span>
+      <button onclick="copiere('de')">Copiază text</button>
+      <button onclick="copiere('deInfo')">Copiază autor/referință</button>
+    </div>
+
+    <div class="language-box" id="caseta_pt">
+      <strong>Português:</strong>
+      <span id="pt"></span>
+      <button onclick="copiere('pt')">Copiază text</button>
+      <button onclick="copiere('ptInfo')">Copiază autor/referință</button>
+    </div>
+
+    <div class="language-box" id="caseta_fr">
+      <strong>Français:</strong>
+      <span id="fr"></span>
+      <button onclick="copiere('fr')">Copiază text</button>
+      <button onclick="copiere('frInfo')">Copiază autor/referință</button>
+    </div>
+    
+    <div class="language-box" id="caseta_it">
+      <strong>Italiano:</strong>
+      <span id="it"></span>
+      <button onclick="copiere('it')">Copiază text</button>
+      <button onclick="copiere('itInfo')">Copiază autor/referință</button>
+    </div>
   </div>
 
-  <!-- Para cada idioma -->
-  <div class="caseta" id="caseta_ro">
-    <strong>Română:</strong> <span id="ro"></span>
-    <div class="referinta" id="roInfo"></div>
-    <button onclick="copiere('ro')">Copiază text</button>
-    <button onclick="copiere('roInfo')">Copiază autor/referință</button>
-  </div>
-
-  <div class="caseta" id="caseta_es">
-    <strong>Español:</strong> <span id="es"></span>
-    <div class="referinta" id="esInfo"></div>
-    <button onclick="copiere('es')">Copiază text</button>
-    <button onclick="copiere('esInfo')">Copiază autor/referință</button>
-  </div>
-
-  <div class="caseta" id="caseta_en">
-    <strong>English:</strong> <span id="en"></span>
-    <div class="referinta" id="enInfo"></div>
-    <button onclick="copiere('en')">Copiază text</button>
-    <button onclick="copiere('enInfo')">Copiază autor/referință</button>
-  </div>
-
-  <div class="caseta" id="caseta_de">
-    <strong>Deutsch:</strong> <span id="de"></span>
-    <div class="referinta" id="deInfo"></div>
-    <button onclick="copiere('de')">Copiază text</button>
-    <button onclick="copiere('deInfo')">Copiază autor/referință</button>
-  </div>
-
-  <div class="caseta" id="caseta_pt">
-    <strong>Português:</strong> <span id="pt"></span>
-    <div class="referinta" id="ptInfo"></div>
-    <button onclick="copiere('pt')">Copiază text</button>
-    <button onclick="copiere('ptInfo')">Copiază autor/referință</button>
-  </div>
-
-  <div class="caseta" id="caseta_fr">
-    <strong>Français:</strong> <span id="fr"></span>
-    <div class="referinta" id="frInfo"></div>
-    <button onclick="copiere('fr')">Copiază text</button>
-    <button onclick="copiere('frInfo')">Copiază autor/referință</button>
-  </div>
-
-  <div class="caseta" id="caseta_it">
-    <strong>Italiano:</strong> <span id="it"></span>
-    <div class="referinta" id="itInfo"></div>
-    <button onclick="copiere('it')">Copiază text</button>
-    <button onclick="copiere('itInfo')">Copiază autor/referință</button>
-  </div>
-
-<script>
-  function getParam(name) {
-    const url = new URL(window.location);
-    return url.searchParams.get(name) || "";
-  }
-
-  function incarcaTextele() {
-    const tip = getParam("tip").toLowerCase(); // "citat" o "verset"
-    const numar = getParam("numar_sursa") || "";
-
-    document.getElementById("numar_sursa").innerText = decodeURIComponent(numar);
-
-    // Autor común para citas
-    const autor = decodeURIComponent(getParam("ro_virtual_autor")).trim();
-
-    // Idiomas
-    const limbi = ["ro", "es", "en", "de", "pt", "fr", "it"];
-
-    limbi.forEach((limba) => {
-      const text = decodeURIComponent(getParam(limba + "_virtual")).trim();
-      const referinta = decodeURIComponent(getParam(limba + "_virtual_referinta")).trim();
-      const elText = document.getElementById(limba);
-      const elInfo = document.getElementById(limba + "Info");
-
-      elText.innerText = text;
-
-      if (tip === "citat") {
-        elInfo.innerText = autor || "";
-        elInfo.style.display = autor ? "block" : "none";
-      } else if (tip === "verset") {
-        elInfo.innerText = referinta || "";
-        elInfo.style.display = referinta ? "block" : "none";
-      } else {
-        elInfo.innerText = "";
-        elInfo.style.display = "none";
+  <script>
+    // Función para copiar al portapapeles
+    function copiere(id) {
+      const elem = document.getElementById(id);
+      if (!elem) {
+        alert("Elemento no encontrado: " + id);
+        return;
       }
-    });
-  }
-
-  function copiere(id) {
-    const el = document.getElementById(id);
-    if (!el) return alert("Elementul nu există.");
-    const text = el.innerText.trim();
-    if (!text) return alert("Nu există nimic de copiat.");
-    navigator.clipboard.writeText(text).then(() => {
-      alert("Textul a fost copiat.");
-    }).catch(() => {
-      alert("Eroare la copiere.");
-    });
-  }
-
-  incarcaTextele();
-</script>
+      let text = elem.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Text copiat: ' + text);
+      }).catch(() => {
+        alert('Eroare la copiere.');
+      });
+    }
+  </script>
 </body>
 </html>
